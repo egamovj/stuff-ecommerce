@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { ROUTES } from "../../utils/routes.js";
 import styles from "../../styles/Product.module.css";
-import { useState, useEffect } from "react";
+import { addItemToCart } from "../../features/user/userSlice.js";
 
 const SIZES = [4, 4.5, 5];
 
-const Product = ({ title, price, images, description }) => {
+const Product = (item) => {
+  const { title, price, images, description } = item;
+  const dispatch = useDispatch();
   const [currentImage, setCurrentImage] = useState();
   const [currentSize, setCurrentSize] = useState();
 
@@ -15,6 +19,10 @@ const Product = ({ title, price, images, description }) => {
     if (!images.length) return;
     setCurrentImage(images[0]);
   }, [images]);
+
+  const addToCart = () => {
+    dispatch(addItemToCart(item));
+  };
 
   return (
     <section className={styles.product}>
@@ -59,7 +67,11 @@ const Product = ({ title, price, images, description }) => {
         <p className={styles.description}>{description}</p>
 
         <div className={styles.actions}>
-          <button className={styles.add} disabled={!currentSize}>
+          <button
+            onClick={addToCart}
+            className={styles.add}
+            disabled={!currentSize}
+          >
             Add to cart
           </button>
           <button className={styles.favourite}>Add to favourites</button>
