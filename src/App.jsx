@@ -6,12 +6,14 @@ import AppRoutes from "./components/Routes/Routes";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { useEffect } from "react";
 import { getCategories } from "./features/categories/categoriesSlice";
+import { getProducts } from "./features/products/productsSlice";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
+    dispatch(getProducts());
   }, [dispatch]);
 
   return (
