@@ -21,9 +21,10 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const isNotEmpty = Object.values(values).some((val) => !val);
+    const isNotEmpty = Object.values(values).every((val) => val);
 
     if (!isNotEmpty) return;
+
     dispatch(createUser(values));
     closeForm();
   };
@@ -31,7 +32,7 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.close} onClick={closeForm}>
-        <svg>
+        <svg className="icon">
           <path
             d="M4.375 4.375L15.625 15.625"
             strokeWidth="2"
@@ -48,7 +49,8 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
       </div>
 
       <div className={styles.title}>Sign Up</div>
-      <form className={styles.form} onClick={handleSubmit}>
+
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.group}>
           <input
             type="email"
@@ -59,7 +61,6 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
             onChange={handleChange}
             required
           />
-          <p></p>
         </div>
 
         <div className={styles.group}>
@@ -112,5 +113,4 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
     </div>
   );
 };
-
 export default UserSignupForm;
