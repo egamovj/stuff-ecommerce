@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { useEffect } from "react";
 import { getCategories } from "./features/categories/categoriesSlice";
 import { getProducts } from "./features/products/productsSlice";
+import UsersForm from "./components/User/UsersForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
     <>
       <div className="app">
         <Header />
+        <UsersForm />
         <div className="container">
           <Sidebar />
           <AppRoutes />
