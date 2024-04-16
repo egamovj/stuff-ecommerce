@@ -9,3 +9,7 @@ Currently, two official plugins are available:
 
 The appearance of this site is made using React.js and Redux-Toolkit
 ![image](https://github.com/egamovj/stuff-ecommerce/assets/134671078/a0db8cf5-e3ee-4b26-8407-4e0915ab7439)
+
+This is single page of the product
+![image](https://github.com/egamovj/stuff-ecommerce/assets/134671078/c6d69e14-9ab9-4843-8e75-333edcc59c89)
+
