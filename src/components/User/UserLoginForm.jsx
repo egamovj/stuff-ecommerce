@@ -2,16 +2,14 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import styles from "../../styles/User.module.css";
-import { createUser } from "../../features/user/userSlice";
+import { loginUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 
-const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
+const UserLoginForm = ({ toggleCurrentFormType, closeForm }) => {
   const dispatch = useDispatch();
   const [values, setValues] = useState({
-    name: "",
     email: "",
     password: "",
-    avatar: "",
   });
 
   const handleChange = ({ target: { value, name } }) => {
@@ -24,7 +22,7 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
     const isNotEmpty = Object.values(values).some((val) => !val);
 
     if (!isNotEmpty) return;
-    dispatch(createUser(values));
+    dispatch(loginUser(values));
     closeForm();
   };
 
@@ -64,18 +62,6 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
 
         <div className={styles.group}>
           <input
-            type="name"
-            placeholder="Your name"
-            name="name"
-            value={values.name}
-            autoComplete="off"
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.group}>
-          <input
             type="password"
             placeholder="Your password"
             name="password"
@@ -86,31 +72,16 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
           />
         </div>
 
-        <div className={styles.group}>
-          <input
-            type="avatar"
-            placeholder="Your avatar"
-            name="avatar"
-            value={values.avatar}
-            autoComplete="off"
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div
-          className={styles.link}
-          onClick={() => toggleCurrentFormType("login")}
-        >
-          I already have an account
+        <div className={styles.link} onClick={toggleCurrentFormType("signup")}>
+          Create an account
         </div>
 
         <button type="submit" className={styles.submit}>
-          Create an account
+          Sign in
         </button>
       </form>
     </div>
   );
 };
 
-export default UserSignupForm;
+export default UserLoginForm;
