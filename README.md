@@ -1,7 +1,7 @@
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-Modern E-Commerce buld with React.js. Several features have been added to this e-commerce
+Modern E-Commerce buld with React.js. Several features have been added to this e-commerce. For example, if you want to buy an item of clothing before adding it to your cart, the Buy button won't work until you select your size
 
 Currently, two official plugins are available:
 
